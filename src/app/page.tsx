@@ -294,7 +294,7 @@ export default function Home() {
   // ─── Render ──────────────────────────────────────────────────────────────
 
   return (
-    <div className="min-h-screen bg-[#0f172a] text-slate-200 font-sans">
+    <div className="min-h-screen bg-[#0f172a] text-slate-200 font-sans overflow-x-hidden">
       {/* Header */}
       <header className="border-b border-slate-800 bg-[#0f172a]/80 backdrop-blur-sm sticky top-0 z-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
@@ -516,7 +516,7 @@ export default function Home() {
                   .map((stop) => (
                     <div
                       key={stop.id}
-                      className="flex items-center gap-3"
+                      className="flex flex-wrap sm:flex-nowrap items-center gap-2 sm:gap-3"
                     >
                       {/* Color picker */}
                       <div className="relative w-9 h-9 rounded-lg overflow-hidden border border-slate-600 shrink-0">
@@ -540,12 +540,12 @@ export default function Home() {
                             updateStopColor(stop.id, val);
                           }
                         }}
-                        className="w-[5.5rem] px-2 py-1.5 rounded-md bg-slate-800 border border-slate-600 text-sm font-mono text-slate-300 focus:outline-none focus:border-indigo-500 transition-colors"
+                        className="w-[5rem] sm:w-[5.5rem] px-2 py-1.5 rounded-md bg-slate-800 border border-slate-600 text-sm font-mono text-slate-300 focus:outline-none focus:border-indigo-500 transition-colors"
                         maxLength={7}
                       />
 
                       {/* Position slider */}
-                      <div className="flex-1 flex items-center gap-2">
+                      <div className="flex-1 min-w-0 flex items-center gap-2">
                         <input
                           type="range"
                           min="0"
@@ -554,9 +554,9 @@ export default function Home() {
                           onChange={(e) =>
                             updateStopPosition(stop.id, Number(e.target.value))
                           }
-                          className="flex-1"
+                          className="flex-1 min-w-0"
                         />
-                        <span className="text-xs font-mono text-slate-500 w-8 text-right">
+                        <span className="text-xs font-mono text-slate-500 w-8 text-right shrink-0">
                           {stop.position}%
                         </span>
                       </div>
@@ -565,7 +565,7 @@ export default function Home() {
                       <button
                         onClick={() => removeStop(stop.id)}
                         disabled={stops.length <= 2}
-                        className="p-1.5 rounded-md text-slate-500 hover:text-red-400 hover:bg-red-400/10 disabled:opacity-30 disabled:cursor-not-allowed transition-colors cursor-pointer"
+                        className="p-1.5 rounded-md text-slate-500 hover:text-red-400 hover:bg-red-400/10 disabled:opacity-30 disabled:cursor-not-allowed transition-colors cursor-pointer shrink-0"
                       >
                         <Minus className="w-4 h-4" />
                       </button>
